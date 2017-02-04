@@ -21,13 +21,33 @@ namespace Sinbin.Web.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("Sinbin", throwIfV1Schema: false)
         {
         }
 
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<IdentityUser>()
+            .ToTable("Users");
+
+            modelBuilder.Entity<IdentityRole>()
+                .ToTable("Roles");
+
+            modelBuilder.Entity<IdentityUserRole>()
+                .ToTable("UserRoles");
+
+            modelBuilder.Entity<IdentityUserClaim>()
+                .ToTable("UserClaims");
+
+            modelBuilder.Entity<IdentityUserLogin>()
+                .ToTable("UserLogins");
         }
     }
 }

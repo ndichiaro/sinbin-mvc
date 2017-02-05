@@ -7,3 +7,17 @@
   background-size: cover;
   margin: 0 auto;
 }
+
+.user-available {
+  box-shadow: 0 0 10px rgba(77, 250, 25, 1);
+  border: 2px solid rgba(77, 250, 25, 1);
+}
+
+.user-unavailable {
+  box-shadow: 0 0 10px rgba(245, 15, 15, 1);
+  border: 2px solid rgba(245, 15, 15, 1);
+}
+
+.img-container{
+    margin: 5px 0px;
+}

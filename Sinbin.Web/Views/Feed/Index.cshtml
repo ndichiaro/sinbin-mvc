@@ -8,7 +8,9 @@
        
         @foreach (var item in Model)
         {
-            <div class="user" style="background-image:url('@item.Image')"></div>
+            <div class="img-container">
+                <div class="@("user " + (item.Active ? "user-available" : "user-unavailable"))" style="background-image:url('@item.Image')"></div>
+            </div>
         }
     </div>
     <div class="col-xs-1"></div>

@@ -32,6 +32,9 @@ namespace Sinbin.Web
 
             bundles.Add(new StyleBundle("~/Content/feed").Include(
                       "~/Content/feed.css"));
+					  
+			bundles.Add(new StyleBundle("~/Content/register").Include(
+                      "~/Content/register.css"));
         }
     }
 }

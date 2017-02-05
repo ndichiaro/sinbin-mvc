@@ -3,41 +3,37 @@
 @{
     ViewBag.Title = "Log in";
 }
+@Styles.Render("~/Content/login")
 
-<div class="row">
-    <div class="col-md-8">
+<div class="row login">
+    <div class="col-xs-1"></div>
+    <div class="col-xs-10">
         <section id="loginForm">
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-                    </div>
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = @Html.DisplayNameFor(m => m.Email) })
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                    </div>
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = @Html.DisplayNameFor(m => m.Password) })
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    @Html.ActionLink("Forgot your password?", "ForgotPassword")
                 </div>
                 <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Log in" class="btn btn-default" />
-                        @Html.ActionLink("Register", "Register", null, new { @class = "btn btn-default" })
+                    <div class="btn-container">
+                        <input type="submit" value="Sign in" id="signIn" class="btn btn-default" />
                     </div>
-                </div>
-                @* Enable this once you have account confirmation enabled for password reset functionality
                     <p>
-                        @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                    </p>*@
+                        Don't have and accout? @Html.ActionLink("Sign up", "Register")
+                    </p>
+                </div>
             }
         </section>
     </div>
+    <div class="col-xs-1"></div>
 </div>
 
 @section Scripts {

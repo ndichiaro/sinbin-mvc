@@ -1,0 +1,15 @@
+﻿@model IEnumerable<Sinbin.Web.Models.Tile>
+
+@Styles.Render("~/Content/feed")
+
+<div class="feed">
+    <div class="col-xs-1"></div>
+    <div class="col-xs-10">
+       
+        @foreach (var item in Model)
+        {
+            <div class="user" style="background-image:url('@item.Image')"></div>
+        }
+    </div>
+    <div class="col-xs-1"></div>
+</div>

@@ -451,7 +451,7 @@ namespace Sinbin.Web.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Feed");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

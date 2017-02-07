@@ -2,12 +2,18 @@
 
 @Styles.Render("~/Content/feed")
 
-<div class="feed">
-    <div class="col-xs-1">
+<div class="toggle">
+    <div class="col-xs-8"></div>
+    <div class="col-xs-4">
         <label class="checkbox-inline">
             <input type="checkbox" checked data-toggle="toggle" data-width="75" data-on=" " data-off=" " data-onstyle="success" data-offstyle="danger">
         </label>
     </div>
+    
+</div>
+
+<div class="feed">
+    <div class="col-xs-1"></div>
     <div class="col-xs-10">
        
         @foreach (var item in Model)

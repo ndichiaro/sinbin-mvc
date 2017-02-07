@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinbin.Web", "Sinbin.Web\Si
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinbin.Data.EF", "Sinbin.Data.EF\Sinbin.Data.EF.csproj", "{1CACC5E9-6970-4DD8-8E68-0B9FBDC571D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinbin.UserManager", "Sinbin.UserManager\Sinbin.UserManager.csproj", "{E1C6C81B-F372-4D1B-8A61-1E624AB3BAFC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinbin.ApplicationManager", "Sinbin.UserManager\Sinbin.ApplicationManager.csproj", "{E1C6C81B-F372-4D1B-8A61-1E624AB3BAFC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

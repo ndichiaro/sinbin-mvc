@@ -11,6 +11,16 @@ namespace Sinbin.Data.EF
 {
     public class User : IdentityUser
     {
+        #region Properties
+        public string ProfilePicture { get; set; }
+        public decimal Latitude { get; set; }
+        public decimal Longitude { get; set; }
+        public DateTime? LastLocationCheck { get; set; }
+        public bool Active { get; set; }
+        public DateTime? LastLogin { get; set; }
+        #endregion
+
+        #region Async Methods
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -18,5 +28,16 @@ namespace Sinbin.Data.EF
             // Add custom user claims here
             return userIdentity;
         }
+        #endregion
+
+        #region Public Methods
+        public IEnumerable<User> GetUsers()
+        {
+            using (var ctx = IdentityContext.Create())
+            {
+                return ctx.Users.ToList();
+            }
+        }
+        #endregion
     }
 }

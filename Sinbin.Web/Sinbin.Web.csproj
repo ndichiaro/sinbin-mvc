@@ -289,9 +289,9 @@
       <Project>{1cacc5e9-6970-4dd8-8e68-0b9fbdc571d1}</Project>
       <Name>Sinbin.Data.EF</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Sinbin.UserManager\Sinbin.UserManager.csproj">
+    <ProjectReference Include="..\Sinbin.UserManager\Sinbin.ApplicationManager.csproj">
       <Project>{E1C6C81B-F372-4D1B-8A61-1E624AB3BAFC}</Project>
-      <Name>Sinbin.UserManager</Name>
+      <Name>Sinbin.ApplicationManager</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

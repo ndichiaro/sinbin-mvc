@@ -21,10 +21,12 @@ namespace Sinbin.Web
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
+                      "~/Scripts/bootstrap-toggle.js",
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/bootstrap-toggle.css",
                       "~/Content/site.css"));
 
             bundles.Add(new StyleBundle("~/Content/login").Include(

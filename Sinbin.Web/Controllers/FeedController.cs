@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace Sinbin.Web.Controllers
 {
+    [Authorize]
     public class FeedController : Controller
     {
         private FeedManager _manager;
@@ -20,7 +21,7 @@ namespace Sinbin.Web.Controllers
         // GET: Feed
         public ActionResult Index()
         {
-            var feed = _manager.GetFeed();
+            var feed = _manager.GetFeed(User.Identity.Name);
             var tiles = new List<Tile>();
             foreach (var tile in feed)
             {

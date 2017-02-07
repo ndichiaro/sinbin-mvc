@@ -3,10 +3,11 @@
 @Styles.Render("~/Content/feed")
 
 <div class="feed">
-    <div class="col-xs-1"></div>
-    <label class="checkbox-inline">
-        <input type="checkbox" checked data-toggle="toggle">
-    </label>
+    <div class="col-xs-1">
+        <label class="checkbox-inline">
+            <input type="checkbox" checked data-toggle="toggle" data-width="75" data-on=" " data-off=" " data-onstyle="success" data-offstyle="danger">
+        </label>
+    </div>
     <div class="col-xs-10">
        
         @foreach (var item in Model)

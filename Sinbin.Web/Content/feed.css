@@ -21,3 +21,16 @@
 .img-container{
     margin: 20px 0px;
 }
+
+.navbar > .container{
+    padding: 7px;
+}
+
+.navbar .toggle{
+    float: right;
+}
+
+/* override bootstrap col padding in navbar */
+.navbar > .container > .col-xs-4{
+    padding: 0;
+}

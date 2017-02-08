@@ -9,10 +9,12 @@ namespace Sinbin.UserManager
 {
     public class FeedManager
     {
-        public IList<User> GetFeed()
+        public IList<User> GetFeed(string username)
         {
             var user = new User();
-            return user.GetUsers().ToList();
+            return user.GetUsers()
+                       .Where(x => x.UserName != username)
+                       .ToList();
         }
     }
 }

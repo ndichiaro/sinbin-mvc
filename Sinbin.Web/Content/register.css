@@ -18,3 +18,32 @@
     background:linear-gradient(to bottom, #5aac44 0, #519839 100%);
     color:#fff
 }
+
+.register .profile {
+  
+  background-image: url("../Images/icon-defaultprofile.png")
+}
+
+.register .image-upload{
+    text-align: center;
+}
+
+.register .image-upload > input
+{
+    display: none;
+}
+
+.register .image-upload img
+{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    cursor: pointer;
+}
+
+.title{
+    text-align: center;
+}

@@ -4,9 +4,15 @@
 }
 @Styles.Render("~/Content/register")
 
-<h2>@ViewBag.Title</h2>
-
+<h2 class="title">@ViewBag.Title</h2>
 <div class="register row">
+    <div class="image-upload">
+        <label for="file-input">
+            <img src="../Images/icon-defaultprofile.png" />
+        </label>
+
+        <input id="file-input" type="file" accept="image/*" capture="camera"/>
+    </div>
     <div class="col-xs-1"></div>
     <div class="col-xs-10">
         <section id="registerForm">

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Web;
 
 namespace Sinbin.Web.Models
 {
@@ -64,6 +65,11 @@ namespace Sinbin.Web.Models
 
     public class RegisterViewModel
     {
+        [Required]
+        [DataType(DataType.Upload)]
+        [Display(Name = "Profile Picture")]
+        public HttpPostedFileBase ProfilePicture { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]

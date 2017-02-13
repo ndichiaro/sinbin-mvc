@@ -11,6 +11,8 @@ using Microsoft.Owin.Security;
 using Sinbin.Web.Models;
 using Sinbin.UserManager;
 using Sinbin.Data.EF;
+using System.IO;
+using Sinbin.FileUpload;
 
 namespace Sinbin.Web.Controllers
 {
@@ -19,9 +21,11 @@ namespace Sinbin.Web.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private IFileStorage _fileStorage;
 
         public AccountController()
         {
+            _fileStorage = new LocalFileStorage();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -151,9 +155,21 @@ namespace Sinbin.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            if (model.ProfilePicture == null)
+            {
+                ModelState.AddModelError("ProfilePicture", "Please upload a profile picture");
+            }
+
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = model.Email, Email = model.Email };
+                var path = _fileStorage.Write(ConvertEmailToFileName(model.Email, model.ProfilePicture.FileName), 
+                    GetPostedFileBytes(model.ProfilePicture));
+                if(string.IsNullOrEmpty(path))
+                {
+                    // display error
+                }
+
+                var user = new User { UserName = model.Email, Email = model.Email, ProfilePicture = path, Active = true };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -481,6 +497,32 @@ namespace Sinbin.Web.Controllers
                 }
                 context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
             }
+        }
+
+        private byte[] GetPostedFileBytes(HttpPostedFileBase file)
+        {
+            byte[] data;
+            using (Stream inputStream = file.InputStream)
+            {
+                MemoryStream memoryStream = inputStream as MemoryStream;
+                if (memoryStream == null)
+                {
+                    memoryStream = new MemoryStream();
+                    inputStream.CopyTo(memoryStream);
+                }
+                data = memoryStream.ToArray();
+            }
+            return data;
+        }
+
+        private string ConvertEmailToFileName(string email, string fileName)
+        {
+            // split the file name by . and take 
+            // the last as the file extension
+            var arr = fileName.Split('.');
+            var extension = arr[arr.Length - 1];
+            var name = email.Split('@')[0];
+            return string.Concat(name, ".", extension);
         }
         #endregion
     }

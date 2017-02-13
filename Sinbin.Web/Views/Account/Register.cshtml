@@ -16,7 +16,7 @@
 
                 <div class="form-group image-upload">
                     <label for="file-input">
-                        <img id="file-image" src="../Images/icon-defaultprofile.png" />
+                        <span id="file-image" style="background-image:url('../Images/icon-defaultprofile.png')"></span>
                     </label>
                     @Html.TextBoxFor(m => m.ProfilePicture, new { type = "file", id = "file-input", accept = "image/*", capture = "camera" })
                 </div>

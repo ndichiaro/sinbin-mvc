@@ -298,6 +298,10 @@
       <Project>{1cacc5e9-6970-4dd8-8e68-0b9fbdc571d1}</Project>
       <Name>Sinbin.Data.EF</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Sinbin.FileUpload\Sinbin.FileStorage.csproj">
+      <Project>{6F435CE6-080A-41C6-9A38-8B06BD4F1BD5}</Project>
+      <Name>Sinbin.FileStorage</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Sinbin.UserManager\Sinbin.ApplicationManager.csproj">
       <Project>{E1C6C81B-F372-4D1B-8A61-1E624AB3BAFC}</Project>
       <Name>Sinbin.ApplicationManager</Name>

@@ -22,6 +22,9 @@ namespace Sinbin.Web
             bundles.Add(new ScriptBundle("~/bundles/register").Include(
                         "~/Scripts/register.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/feed").Include(
+                        "~/Scripts/feed.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/bootstrap-toggle.js",

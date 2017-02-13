@@ -34,3 +34,18 @@
 .navbar > .container > .col-xs-4{
     padding: 0;
 }
+
+.feed .navbar-toggle{
+    float: left;
+    margin-left: 10px;
+}
+
+.feed .toggle.btn{
+    margin-top: 8px;
+    margin-right: 10px;
+    margin-bottom: 8px;
+}
+
+.feed .nav li:hover{
+    background-color: rgb(121, 121, 121);
+}

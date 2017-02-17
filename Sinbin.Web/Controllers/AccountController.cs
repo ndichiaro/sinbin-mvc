@@ -421,6 +421,13 @@ namespace Sinbin.Web.Controllers
             return View();
         }
 
+        [HttpGet]
+        [Authorize]
+        public ActionResult ViewProfile()
+        {
+            return View();
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

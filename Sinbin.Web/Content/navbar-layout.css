@@ -1,0 +1,27 @@
+﻿.navbar > .container{
+    padding: 7px;
+}
+
+.navbar .toggle{
+    float: right;
+}
+
+/* override bootstrap col padding in navbar */
+.navbar > .container > .col-xs-4{
+    padding: 0;
+}
+
+.navbar-toggle{
+    float: left;
+    margin-left: 10px;
+}
+
+.toggle.btn{
+    margin-top: 8px;
+    margin-right: 10px;
+    margin-bottom: 8px;
+}
+
+.nav li:hover{
+    background-color: rgb(121, 121, 121);
+}

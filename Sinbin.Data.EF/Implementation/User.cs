@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
@@ -12,6 +13,9 @@ namespace Sinbin.Data.EF
     public class User : IdentityUser
     {
         #region Properties
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        [Required]
         public string ProfilePicture { get; set; }
         public decimal Latitude { get; set; }
         public decimal Longitude { get; set; }

@@ -1,4 +1,4 @@
-﻿var Feed = (function () {
+﻿var NavBar = (function () {
 
     var linkLogOff = {}
     var form = {}
@@ -30,7 +30,7 @@
 })();
 
 $(function () {
-    var logOff = new Feed({
+    var navBar = new NavBar({
         logoff: "#linkLogOff",
         form: "#logoutForm"
     });

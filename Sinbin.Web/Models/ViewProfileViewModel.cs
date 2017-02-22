@@ -3,12 +3,15 @@ using System.Web;
 
 namespace Sinbin.Web.Models
 {
-    public class RegisterViewModel
+    public class ViewProfileViewModel
     {
-        [Required]
         [DataType(DataType.Upload)]
         [Display(Name = "Profile Picture")]
         public HttpPostedFileBase ProfilePicture { get; set; }
+
+        [DataType(DataType.Text)]
+        [Display(Name = "Profile Picture Url")]
+        public string ProfilePictureUrl { get; set; }
 
         [Required]
         [DataType(DataType.Text)]
@@ -25,7 +28,6 @@ namespace Sinbin.Web.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]

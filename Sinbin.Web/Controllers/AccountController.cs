@@ -1,7 +1,4 @@
-﻿using System;
-using System.Globalization;
-using System.Linq;
-using System.Security.Claims;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -21,7 +18,7 @@ namespace Sinbin.Web.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private IFileStorage _fileStorage;
+        private readonly IFileStorage _fileStorage;
 
         public AccountController()
         {
@@ -63,6 +60,8 @@ namespace Sinbin.Web.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+            // if user is currently logged in, redirect to feed index
+            if (User.Identity.IsAuthenticated) return RedirectToAction("Index", "Feed");
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
@@ -162,14 +161,22 @@ namespace Sinbin.Web.Controllers
 
             if (ModelState.IsValid)
             {
-                var path = _fileStorage.Write(ConvertEmailToFileName(model.Email, model.ProfilePicture.FileName), 
+                var url = _fileStorage.Write(ConvertEmailToFileName(model.Email, model.ProfilePicture.FileName), 
                     GetPostedFileBytes(model.ProfilePicture));
-                if(string.IsNullOrEmpty(path))
+                if(string.IsNullOrEmpty(url))
                 {
                     // display error
                 }
 
-                var user = new User { UserName = model.Email, Email = model.Email, ProfilePicture = path, Active = true };
+                var user = new User
+                {
+                    ProfilePicture = url,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    UserName = model.Email,
+                    Email = model.Email,
+                    Active = true
+                };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -423,9 +430,51 @@ namespace Sinbin.Web.Controllers
 
         [HttpGet]
         [Authorize]
-        public ActionResult ViewProfile()
+        public async Task<ActionResult> ViewProfile()
         {
-            return View();
+            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            var viewModel = new ViewProfileViewModel
+            {
+                ProfilePictureUrl = user.ProfilePicture,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email
+            };
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public ActionResult ViewProfile(ViewProfileViewModel model)
+        {
+            var user = UserManager.FindById(User.Identity.GetUserId());
+            if (user != null)
+            {
+                // if newly posted file
+                if (model.ProfilePicture != null)
+                {
+                    var url = _fileStorage.Write(ConvertEmailToFileName(model.Email, model.ProfilePicture.FileName),
+                    GetPostedFileBytes(model.ProfilePicture));
+                    if (string.IsNullOrEmpty(url))
+                    {
+                        // display error
+                    }
+                    user.ProfilePicture = url;
+                }
+                user.FirstName = model.FirstName;
+                user.LastName = model.LastName;
+                user.Email = user.Email;
+                user.UserName = user.Email;
+                if (!string.IsNullOrEmpty(model.Password))
+                {
+                    user.PasswordHash = new PasswordHasher().HashPassword(model.Password);
+                }
+                UserManager.Update(user);
+                model.ProfilePictureUrl = user.ProfilePicture;
+            }
+            return View(model);
         }
 
         protected override void Dispose(bool disposing)

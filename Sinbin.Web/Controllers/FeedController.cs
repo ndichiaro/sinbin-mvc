@@ -22,10 +22,10 @@ namespace Sinbin.Web.Controllers
         public ActionResult Index()
         {
             var feed = _manager.GetFeed(User.Identity.Name);
-            var tiles = new List<Tile>();
+            var tiles = new List<TileViewModel>();
             foreach (var tile in feed)
             {
-                tiles.Add(new Tile
+                tiles.Add(new TileViewModel
                 {
                     Image = tile.ProfilePicture,
                     Active = tile.Active

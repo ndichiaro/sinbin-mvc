@@ -1,39 +1,44 @@
-﻿.register .btn{
+﻿.row {
+    margin: 15px;    
+}
+
+.btn-container .btn{
     width: 100%;
 }
 
-.register .btn-container{
+.btn-container .btn-container{
     padding: 5px 0px;
 }
 
-.register .btn-green {
+.btn-container .btn-green {
   background:#61bd4f;
   box-shadow:0 2px 0 #3f6f21;
   color:#fff
 }
 
-.register .btn-green:hover {
+.btn-container .btn-green:hover {
     background:#5aac44;
     background:-webkit-linear-gradient(top, #5aac44 0, #519839 100%);
     background:linear-gradient(to bottom, #5aac44 0, #519839 100%);
     color:#fff
 }
 
-.register .profile {
+.profile {
   
   background-image: url("../Images/icon-defaultprofile.png")
 }
 
-.register .image-upload{
+.image-upload{
     text-align: center;
+    cursor: pointer;
 }
 
-.register .image-upload > input
+.image-upload > input
 {
     display: none;
 }
 
-.register #file-image
+#file-image
 {
     display: block;
     width: 250px;

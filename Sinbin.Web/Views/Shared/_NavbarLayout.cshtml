@@ -24,10 +24,11 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Feed")</li>
                         <li>@Html.ActionLink("Profile", "ViewProfile", "Account")</li>
                         <li>
                             <a href="#" id="linkLogOff">Log Off</a>
-                            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new {id = "logoutForm"}))
                             {
                                 @Html.AntiForgeryToken()
                             }

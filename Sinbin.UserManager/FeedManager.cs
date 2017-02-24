@@ -11,10 +11,13 @@ namespace Sinbin.UserManager
     {
         public IList<User> GetFeed(string username)
         {
-            var user = new User();
-            return user.GetUsers()
-                       .Where(x => x.UserName != username)
-                       .ToList();
+            using (var ctx = IdentityContext.Create())
+            {
+                var user = new User();
+                return user.GetUsers(ctx)
+                           .Where(x => x.UserName != username)
+                           .ToList();
+            }
         }
     }
 }

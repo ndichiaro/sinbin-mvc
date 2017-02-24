@@ -35,12 +35,23 @@ namespace Sinbin.Data.EF
         #endregion
 
         #region Public Methods
-        public IEnumerable<User> GetUsers()
+        public IEnumerable<User> GetUsers(IdentityContext ctx)
         {
-            using (var ctx = IdentityContext.Create())
-            {
-                return ctx.Users.ToList();
-            }
+            return ctx.Users.ToList();
+        }
+
+        // return the user the contains the id 
+        public User FindById(IdentityContext ctx, string id)
+        {
+            return ctx.Users.FirstOrDefault(x => x.Id == id);
+        }
+
+        public User Update(IdentityContext ctx, User user)
+        {
+            var result = FindById(ctx, user.Id);
+            ctx.Entry(result).CurrentValues.SetValues(user);
+            ctx.SaveChanges();
+            return result;
         }
         #endregion
     }

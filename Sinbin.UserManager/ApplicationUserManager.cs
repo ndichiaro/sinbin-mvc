@@ -70,5 +70,17 @@ namespace Sinbin.UserManager
             }
             return manager;
         }
+
+        // updates the 
+        public bool UpdateUserAvailability(string id, bool available)
+        {
+            using (var ctx = IdentityContext.Create())
+            {
+                var controller = new User();
+                var user = controller.FindById(ctx, id);
+                user.Active = available;
+                return controller.Update(ctx, user).Active;
+            }
+        }
     }
 }

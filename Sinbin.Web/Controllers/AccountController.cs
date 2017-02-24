@@ -9,6 +9,7 @@ using Sinbin.Web.Models;
 using Sinbin.UserManager;
 using Sinbin.Data.EF;
 using System.IO;
+using Newtonsoft.Json;
 using Sinbin.FileUpload;
 
 namespace Sinbin.Web.Controllers
@@ -475,6 +476,14 @@ namespace Sinbin.Web.Controllers
                 model.ProfilePictureUrl = user.ProfilePicture;
             }
             return View(model);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public JsonResult UpdateAvailability(bool available)
+        {
+            var result = UserManager.UpdateUserAvailability(User.Identity.GetUserId(), available);
+            return Json(result);
         }
 
         protected override void Dispose(bool disposing)

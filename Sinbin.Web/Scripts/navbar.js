@@ -18,13 +18,18 @@
             }
         }
     }
+    
+    var setStatus = function (status) {
+        if (status) {
+            toggle.bootstrapToggle("on");
+        } else {
+            toggle.bootstrapToggle("off");
+        }
+        successfulToggle(status);
+    }
 
-    var init = function () {
-        linkLogOff.click(function () {
-            post();
-        });
-
-        toggle.change(function() {
+    var initToggleHandlers = function() {
+        toggle.change(function () {
             var data = {
                 available: $(this).prop("checked")
             };
@@ -42,6 +47,28 @@
                 }
             });
         });
+    }
+
+    var onLoad = function() {
+        $.ajax({
+            url: "/Account/Status",
+            type: "GET",
+            contentType: "application/json; charset=utf-8",
+            error: function (xhr) {
+                alert("Error: " + xhr.statusText);
+            },
+            success: function (result) {
+                setStatus(result);
+            }
+        });
+    }
+
+    var init = function () {
+        linkLogOff.click(function () {
+            post();
+        });
+        initToggleHandlers();
+        onLoad();
     };
 
     // constructor

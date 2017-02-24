@@ -486,6 +486,14 @@ namespace Sinbin.Web.Controllers
             return Json(result);
         }
 
+        [HttpGet]
+        [Authorize]
+        public JsonResult Status()
+        {
+            var result = UserManager.FindById(User.Identity.GetUserId()).Active;
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

@@ -35,12 +35,22 @@ namespace Sinbin.Data.EF
         #endregion
 
         #region Public Methods
+        /// <summary>
+        /// Get all users
+        /// </summary>
+        /// <param name="ctx"></param>
+        /// <returns></returns>
         public IEnumerable<User> GetUsers(IdentityContext ctx)
         {
             return ctx.Users.ToList();
         }
 
-        // return the user the contains the id 
+        /// <summary>
+        /// return the user the contains the id 
+        /// </summary>
+        /// <param name="ctx"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public User FindById(IdentityContext ctx, string id)
         {
             return ctx.Users.FirstOrDefault(x => x.Id == id);
@@ -52,6 +62,17 @@ namespace Sinbin.Data.EF
             ctx.Entry(result).CurrentValues.SetValues(user);
             ctx.SaveChanges();
             return result;
+        }
+
+        /// <summary>
+        /// returns the user that contails the email parameter
+        /// </summary>
+        /// <param name="ctx"></param>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        public User FindByEmail(IdentityContext ctx, string email)
+        {
+            return ctx.Users.FirstOrDefault(x => x.Email == email);
         }
         #endregion
     }

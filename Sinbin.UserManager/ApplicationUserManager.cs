@@ -71,13 +71,34 @@ namespace Sinbin.UserManager
             return manager;
         }
 
-        // updates the 
+        /// <summary>
+        /// updates the user availability by the user's Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="available"></param>
+        /// <returns></returns>
         public bool UpdateUserAvailability(string id, bool available)
         {
             using (var ctx = IdentityContext.Create())
             {
                 var controller = new User();
                 var user = controller.FindById(ctx, id);
+                user.Active = available;
+                return controller.Update(ctx, user).Active;
+            }
+        }
+        /// <summary>
+        /// updates the user availability by the user's email
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="available"></param>
+        /// <returns></returns>
+        public bool UpdateUserAvailabilityByEmail(string email, bool available)
+        {
+            using (var ctx = IdentityContext.Create())
+            {
+                var controller = new User();
+                var user = controller.FindByEmail(ctx, email);
                 user.Active = available;
                 return controller.Update(ctx, user).Active;
             }

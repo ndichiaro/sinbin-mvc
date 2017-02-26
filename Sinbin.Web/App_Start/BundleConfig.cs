@@ -23,7 +23,8 @@ namespace Sinbin.Web
                         "~/Scripts/register.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/navbar").Include(
-                        "~/Scripts/navbar.js"));
+                        "~/Scripts/navbar.js",
+                        "~/Scripts/navbar-layout.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",

@@ -9,7 +9,6 @@ using Sinbin.Web.Models;
 using Sinbin.UserManager;
 using Sinbin.Data.EF;
 using System.IO;
-using Newtonsoft.Json;
 using Sinbin.FileUpload;
 
 namespace Sinbin.Web.Controllers
@@ -17,30 +16,35 @@ namespace Sinbin.Web.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        #region Variables
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
         private readonly IFileStorage _fileStorage;
+        #endregion
 
+        #region Constructors
         public AccountController()
         {
             _fileStorage = new LocalFileStorage();
         }
-
+        
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
         {
             UserManager = userManager;
             SignInManager = signInManager;
         }
+        #endregion
 
+        #region Properties
         public ApplicationSignInManager SignInManager
         {
             get
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -55,8 +59,9 @@ namespace Sinbin.Web.Controllers
                 _userManager = value;
             }
         }
+        #endregion
 
-        //
+        #region Action Methods
         // GET: /Account/Login
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
@@ -85,12 +90,13 @@ namespace Sinbin.Web.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    // update status to active when user logs in successfully
+                    UserManager.UpdateUserAvailabilityByEmail(model.Email, true);
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-                case SignInStatus.Failure:
+                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, model.RememberMe });
                 default:
                     ModelState.AddModelError("", "Invalid login attempt.");
                     return View(model);
@@ -133,7 +139,6 @@ namespace Sinbin.Web.Controllers
                     return RedirectToLocal(model.ReturnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
-                case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "Invalid code.");
                     return View(model);
@@ -340,7 +345,7 @@ namespace Sinbin.Web.Controllers
             {
                 return View("Error");
             }
-            return RedirectToAction("VerifyCode", new { Provider = model.SelectedProvider, ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
+            return RedirectToAction("VerifyCode", new { Provider = model.SelectedProvider, model.ReturnUrl, model.RememberMe });
         }
 
         //
@@ -355,7 +360,7 @@ namespace Sinbin.Web.Controllers
             }
 
             // Sign in the user with this external login provider if the user already has a login
-            var result = await SignInManager.ExternalSignInAsync(loginInfo, isPersistent: false);
+            var result = await SignInManager.ExternalSignInAsync(loginInfo, false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -364,7 +369,6 @@ namespace Sinbin.Web.Controllers
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = false });
-                case SignInStatus.Failure:
                 default:
                     // If the user does not have an account, then prompt the user to create an account
                     ViewBag.ReturnUrl = returnUrl;
@@ -493,7 +497,9 @@ namespace Sinbin.Web.Controllers
             var result = UserManager.FindById(User.Identity.GetUserId()).Active;
             return Json(result, JsonRequestBehavior.AllowGet);
         }
+        #endregion
 
+        #region Override Methods
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -513,6 +519,7 @@ namespace Sinbin.Web.Controllers
 
             base.Dispose(disposing);
         }
+        #endregion
 
         #region Helpers
         // Used for XSRF protection when adding external logins

@@ -422,6 +422,8 @@ namespace Sinbin.Web.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            // make user inactive when signing out
+            UserManager.UpdateUserAvailability(User.Identity.GetUserId(), false);
             return RedirectToAction("Login");
         }
 

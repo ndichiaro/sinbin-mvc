@@ -3,7 +3,7 @@ using System.Web;
 
 namespace Sinbin.Web.Models
 {
-    public class ViewProfileViewModel
+    public class UserProfileViewModel
     {
         [DataType(DataType.Upload)]
         [Display(Name = "Profile Picture")]

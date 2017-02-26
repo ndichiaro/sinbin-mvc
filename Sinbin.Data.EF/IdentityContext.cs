@@ -24,6 +24,9 @@ namespace Sinbin.Data.EF
             modelBuilder.Entity<User>()
             .ToTable("Users");
 
+            modelBuilder.Entity<User>().Property(x => x.Latitude).HasPrecision(12, 9);
+            modelBuilder.Entity<User>().Property(x => x.Longitude).HasPrecision(12, 9);
+
             modelBuilder.Entity<IdentityRole>()
                 .ToTable("Roles");
 

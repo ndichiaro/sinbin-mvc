@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -437,10 +438,10 @@ namespace Sinbin.Web.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<ActionResult> ViewProfile()
+        public async Task<ActionResult> UserProfile()
         {
             var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-            var viewModel = new ViewProfileViewModel
+            var viewModel = new UserProfileViewModel
             {
                 ProfilePictureUrl = user.ProfilePicture,
                 FirstName = user.FirstName,
@@ -454,7 +455,7 @@ namespace Sinbin.Web.Controllers
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult ViewProfile(ViewProfileViewModel model)
+        public ActionResult UserProfile(UserProfileViewModel model)
         {
             var user = UserManager.FindById(User.Identity.GetUserId());
             if (user != null)
@@ -484,24 +485,36 @@ namespace Sinbin.Web.Controllers
             return View(model);
         }
 
+        [HttpGet]
+        [Authorize]
+        public JsonResult Availability()
+        {
+            var result = UserManager.FindById(User.Identity.GetUserId()).Active;
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
         [HttpPost]
         [Authorize]
-        public JsonResult UpdateAvailability(bool available)
+        public JsonResult Availability(bool available)
         {
             var result = UserManager.UpdateUserAvailability(User.Identity.GetUserId(), available);
             return Json(result);
         }
 
-        [HttpGet]
+        [HttpPost]
         [Authorize]
-        public JsonResult Status()
+        public async Task<JsonResult> Location(LocationViewModel location)
         {
-            var result = UserManager.FindById(User.Identity.GetUserId()).Active;
-            return Json(result, JsonRequestBehavior.AllowGet);
+            var result =
+                await UserManager.UpdateLocationAsync(User.Identity.GetUserId(), location.Latitude, location.Longitude);
+            return Json(string.IsNullOrEmpty(result) ? 
+                new {Success = false, Message = "An error occurred while updating location."} : 
+                new { Success = true, Message = "Location updated successfully." });
         }
+
         #endregion
 
-        #region Override Methods
+            #region Override Methods
         protected override void Dispose(bool disposing)
         {
             if (disposing)

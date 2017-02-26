@@ -25,7 +25,7 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li>@Html.ActionLink("Home", "Index", "Feed")</li>
-                        <li>@Html.ActionLink("Profile", "ViewProfile", "Account")</li>
+                        <li>@Html.ActionLink("Profile", "Profile", "Account")</li>
                         <li>
                             <a href="#" id="linkLogOff">Log Off</a>
                             @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new {id = "logoutForm"}))

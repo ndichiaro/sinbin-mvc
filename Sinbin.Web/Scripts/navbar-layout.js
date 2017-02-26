@@ -6,4 +6,7 @@
         content: ".feed"
     });
     navBar.Init();
+
+    var location = new LocationManager();
+    location.Watch();
 });

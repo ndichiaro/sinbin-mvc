@@ -1,4 +1,4 @@
-﻿@model Sinbin.Web.Models.ViewProfileViewModel
+﻿@model Sinbin.Web.Models.UserProfileViewModel
 
 @{
     Layout = "~/Views/Shared/_NavbarLayout.cshtml";
@@ -10,7 +10,7 @@
     <div class="col-xs-1"></div>
     <div class="col-xs-10">
         <section id="registerForm">
-            @using (Html.BeginForm("ViewProfile", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+            @using (Html.BeginForm("UserProfile", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
             {
                 @Html.AntiForgeryToken()
 

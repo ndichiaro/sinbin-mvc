@@ -21,7 +21,6 @@ namespace Sinbin.Data.EF
         public decimal Longitude { get; set; }
         public DateTime? LastLocationCheck { get; set; }
         public bool Active { get; set; }
-        public DateTime? LastLogin { get; set; }
         #endregion
 
         #region Async Methods
@@ -73,6 +72,20 @@ namespace Sinbin.Data.EF
         public User FindByEmail(IdentityContext ctx, string email)
         {
             return ctx.Users.FirstOrDefault(x => x.Email == email);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ctx"></param>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public async Task<string> UpdateLocationAsync(IdentityContext ctx, User user)
+        {
+            var result = FindById(ctx, user.Id);
+            ctx.Entry(result).CurrentValues.SetValues(user);
+            await ctx.SaveChangesAsync();
+            return result.Id;
         }
         #endregion
     }

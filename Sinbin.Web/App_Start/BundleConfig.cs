@@ -24,7 +24,8 @@ namespace Sinbin.Web
 
             bundles.Add(new ScriptBundle("~/bundles/navbar").Include(
                         "~/Scripts/navbar.js",
-                        "~/Scripts/navbar-layout.js"));
+                        "~/Scripts/navbar-layout.js",
+                        "~/Scripts/location-manager.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",

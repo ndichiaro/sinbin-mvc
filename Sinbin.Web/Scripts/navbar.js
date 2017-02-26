@@ -35,7 +35,7 @@
             };
 
             $.ajax({
-                url: "/Account/UpdateAvailability",
+                url: "/Account/Availability",
                 type: "POST",
                 data: JSON.stringify(data),
                 contentType: "application/json; charset=utf-8",
@@ -51,7 +51,7 @@
 
     var onLoad = function() {
         $.ajax({
-            url: "/Account/Status",
+            url: "/Account/Availability",
             type: "GET",
             contentType: "application/json; charset=utf-8",
             error: function (xhr) {

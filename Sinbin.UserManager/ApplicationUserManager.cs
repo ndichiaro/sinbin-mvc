@@ -103,5 +103,25 @@ namespace Sinbin.UserManager
                 return controller.Update(ctx, user).Active;
             }
         }
+
+        /// <summary>
+        /// Updates the users location
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="latitude"></param>
+        /// <param name="longitude"></param>
+        /// <returns></returns>
+        public async Task<string> UpdateLocationAsync(string id, decimal latitude, decimal longitude)
+        {
+            using (var ctx = IdentityContext.Create())
+            {
+                var controller = new User();
+                var user = await FindByIdAsync(id);
+                user.Latitude = latitude;
+                user.Longitude = longitude;
+                user.LastLocationCheck = DateTime.Now;
+                return await controller.UpdateLocationAsync(ctx, user);
+            }
+        }
     }
 }

@@ -26,7 +26,8 @@ namespace Sinbin.Web.Controllers
         #region Constructors
         public AccountController()
         {
-            _fileStorage = new LocalFileStorage();
+            //_fileStorage = new LocalFileStorage();
+            _fileStorage = new AmazonFileStorage();
         }
         
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )

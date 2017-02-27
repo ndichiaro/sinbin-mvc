@@ -1,6 +1,7 @@
 ﻿var LocationManager = (function() {
     var id, options;
-    var module = function (settings) {
+
+    function module(settings) {
         if (settings != undefined) {
             if ("options" in settings) {
                 options = settings.options;

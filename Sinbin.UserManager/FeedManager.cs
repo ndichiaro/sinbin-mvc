@@ -9,14 +9,13 @@ namespace Sinbin.UserManager
 {
     public class FeedManager
     {
-        public IList<User> GetFeed(string username)
+        public async Task<IList<User>> GetFeed(string username)
         {
             using (var ctx = IdentityContext.Create())
             {
                 var user = new User();
-                return user.GetUsers(ctx)
-                           .Where(x => x.UserName != username)
-                           .ToList();
+                var result = await user.GetUsers(ctx);
+                return result.Where(x => x.UserName != username).ToList();
             }
         }
     }

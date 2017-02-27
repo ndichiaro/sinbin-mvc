@@ -1,15 +1,12 @@
 ﻿var NavBar = (function () {
 
-    var linkLogOff = {}
-    var form = {}
-    var toggle = {}
-    var content = {}
+    var linkLogOff, form, toggle, content;
 
-    var post = function () {
+    function post() {
         form.submit();
     };
 
-    var successfulToggle = function(status) {
+    function successfulToggle(status) {
         if (status === toggle.prop("checked")) {
             if (status) {
                 content.show();
@@ -19,7 +16,7 @@
         }
     }
     
-    var setStatus = function (status) {
+    function setStatus(status) {
         if (status) {
             toggle.bootstrapToggle("on");
         } else {
@@ -28,7 +25,7 @@
         successfulToggle(status);
     }
 
-    var initToggleHandlers = function() {
+    function initToggleHandlers() {
         toggle.change(function () {
             var data = {
                 available: $(this).prop("checked")
@@ -49,7 +46,7 @@
         });
     }
 
-    var onLoad = function() {
+    function onLoad() {
         $.ajax({
             url: "/Account/Availability",
             type: "GET",
@@ -63,7 +60,7 @@
         });
     }
 
-    var init = function () {
+    function init() {
         linkLogOff.click(function () {
             post();
         });
@@ -72,7 +69,7 @@
     };
 
     // constructor
-    var module = function (settings) {
+    function module(settings) {
         if ("logoff" in settings) {
             linkLogOff = $(settings.logoff);
         }

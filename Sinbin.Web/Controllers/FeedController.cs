@@ -1,9 +1,7 @@
 ﻿using Sinbin.UserManager;
 using Sinbin.Web.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace Sinbin.Web.Controllers
@@ -11,17 +9,26 @@ namespace Sinbin.Web.Controllers
     [Authorize]
     public class FeedController : Controller
     {
-        private FeedManager _manager;
+        private readonly FeedManager _manager;
 
         public FeedController()
         {
             _manager = new FeedManager();
         }
 
-        // GET: Feed
+        [HttpGet]
+        [Authorize]
         public ActionResult Index()
         {
-            var feed = _manager.GetFeed(User.Identity.Name);
+            return View();
+        }
+
+        // Feed/Feed
+        [HttpGet]
+        [Authorize]
+        public async Task<JsonResult> Feed()
+        {
+            var feed = await _manager.GetFeed(User.Identity.Name);
             var tiles = new List<TileViewModel>();
             foreach (var tile in feed)
             {
@@ -32,7 +39,7 @@ namespace Sinbin.Web.Controllers
                 });
             }
 
-            return View(tiles);
+            return Json(tiles, JsonRequestBehavior.AllowGet);
         }
     }
 }

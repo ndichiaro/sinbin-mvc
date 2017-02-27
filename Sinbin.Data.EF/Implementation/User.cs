@@ -3,6 +3,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
@@ -39,9 +40,9 @@ namespace Sinbin.Data.EF
         /// </summary>
         /// <param name="ctx"></param>
         /// <returns></returns>
-        public IEnumerable<User> GetUsers(IdentityContext ctx)
+        public async Task<IEnumerable<User>> GetUsers(IdentityContext ctx)
         {
-            return ctx.Users.ToList();
+            return await ctx.Users.ToListAsync();
         }
 
         /// <summary>

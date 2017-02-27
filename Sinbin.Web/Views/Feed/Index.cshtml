@@ -7,18 +7,12 @@
 <div class="feed">
     <div class="row">
         <div class="col-xs-1"></div>
-        <div class="col-xs-10">
-       
-            @foreach (var item in Model)
-            {
-                <div class="img-container">
-                    <div class="@("user " + (item.Active ? "user-available" : "user-unavailable"))" style="background-image:url('@item.Image')"></div>
-                </div>
-            }
+        <div class="feed-containter col-xs-10">
         </div>
         <div class="col-xs-1"></div>
     </div>
 </div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/feed")
 }

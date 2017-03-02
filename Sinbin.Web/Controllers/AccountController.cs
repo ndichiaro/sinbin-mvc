@@ -183,13 +183,13 @@ namespace Sinbin.Web.Controllers
                     LastName = model.LastName,
                     UserName = model.Email,
                     Email = model.Email,
-                    Active = true
+                    Availability = true
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                    UserManager.UpdateUserAvailability(user.Id, true);
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
@@ -424,8 +424,8 @@ namespace Sinbin.Web.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            // make user inactive when signing out
-            UserManager.UpdateUserAvailability(User.Identity.GetUserId(), false);
+            // make user inactive and set status to offline when signing out
+            UserManager.UpdateUserAvailability(User.Identity.GetUserId(), false, false);
             return RedirectToAction("Login");
         }
 
@@ -490,7 +490,7 @@ namespace Sinbin.Web.Controllers
         [Authorize]
         public JsonResult Availability()
         {
-            var result = UserManager.FindById(User.Identity.GetUserId()).Active;
+            var result = UserManager.FindById(User.Identity.GetUserId()).Availability;
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 

@@ -14,8 +14,8 @@ namespace Sinbin.UserManager
             using (var ctx = IdentityContext.Create())
             {
                 var user = new User();
-                var result = await user.GetUsers(ctx);
-                return result.Where(x => x.UserName != username).ToList();
+                var result = await user.GetOnlineUsers(ctx, username);
+                return result.ToList();
             }
         }
     }

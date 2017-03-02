@@ -21,7 +21,8 @@ namespace Sinbin.Data.EF
         public decimal Latitude { get; set; }
         public decimal Longitude { get; set; }
         public DateTime? LastLocationCheck { get; set; }
-        public bool Active { get; set; }
+        public bool Availability { get; set; }
+        public bool Online { get; set; }
         #endregion
 
         #region Async Methods
@@ -36,13 +37,26 @@ namespace Sinbin.Data.EF
 
         #region Public Methods
         /// <summary>
-        /// Get all users
+        /// Gets all users.
         /// </summary>
         /// <param name="ctx"></param>
         /// <returns></returns>
         public async Task<IEnumerable<User>> GetUsers(IdentityContext ctx)
         {
             return await ctx.Users.ToListAsync();
+        }
+
+        /// <summary>
+        /// Gets all online users that are not the calling user.
+        /// </summary>
+        /// <param name="ctx"></param>
+        /// <param name="username"></param>
+        /// <returns></returns>
+        public async Task<IEnumerable<User>> GetOnlineUsers(IdentityContext ctx, string username)
+        {
+            return await ctx.Users
+                            .Where(x => x.UserName != username && x.Online)
+                            .ToListAsync();
         }
 
         /// <summary>

@@ -4,9 +4,6 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Sinbin.Data.EF;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Sinbin.UserManager
@@ -72,35 +69,43 @@ namespace Sinbin.UserManager
         }
 
         /// <summary>
-        /// updates the user availability by the user's Id
+        /// updates the user availability and online status 
+        /// by the user's id. By default the online status is true
+        /// unless specified
         /// </summary>
         /// <param name="id"></param>
         /// <param name="available"></param>
+        /// <param name="online"></param>
         /// <returns></returns>
-        public bool UpdateUserAvailability(string id, bool available)
+        public bool UpdateUserAvailability(string id, bool available, bool online = true)
         {
             using (var ctx = IdentityContext.Create())
             {
                 var controller = new User();
                 var user = controller.FindById(ctx, id);
-                user.Active = available;
-                return controller.Update(ctx, user).Active;
+                user.Availability = available;
+                user.Online = online;
+                return controller.Update(ctx, user).Availability;
             }
         }
         /// <summary>
-        /// updates the user availability by the user's email
+        /// updates the user availability and online status 
+        /// by the user's email. By default the online status is true
+        /// unless specified
         /// </summary>
         /// <param name="email"></param>
         /// <param name="available"></param>
+        /// <param name="online"></param>
         /// <returns></returns>
-        public bool UpdateUserAvailabilityByEmail(string email, bool available)
+        public bool UpdateUserAvailabilityByEmail(string email, bool available, bool online = true)
         {
             using (var ctx = IdentityContext.Create())
             {
                 var controller = new User();
                 var user = controller.FindByEmail(ctx, email);
-                user.Active = available;
-                return controller.Update(ctx, user).Active;
+                user.Availability = available;
+                user.Online = online;
+                return controller.Update(ctx, user).Availability;
             }
         }
 

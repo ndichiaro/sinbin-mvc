@@ -35,7 +35,7 @@ namespace Sinbin.Web.Controllers
                 tiles.Add(new TileViewModel
                 {
                     Image = tile.ProfilePicture,
-                    Active = tile.Active
+                    Active = tile.Availability
                 });
             }
 

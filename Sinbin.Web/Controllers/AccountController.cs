@@ -481,7 +481,10 @@ namespace Sinbin.Web.Controllers
                     user.PasswordHash = new PasswordHasher().HashPassword(model.Password);
                 }
                 UserManager.Update(user);
-                model.ProfilePictureUrl = user.ProfilePicture;
+                // add randomId parameter so that the css will pull the updated
+                // profile picture rather than the cached. This is because the url
+                // always remains the same for the user
+                model.ProfilePictureUrl = user.ProfilePicture + $"?randomId={ Guid.NewGuid() }";
             }
             return View(model);
         }

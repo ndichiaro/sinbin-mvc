@@ -40,10 +40,28 @@
     <div class="container body-content">
         @RenderBody()
     </div>
-
+    <nav id="footer-nav" class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container">
+            <div class="col-xs-4 text-center">
+                <a href="@Url.Action("Index", "Feed")">
+                    <img id="FeedIcon" class="nav-icon" src="../../Images/activity-feed-grey.png" alt="Feed"/>
+                </a>
+            </div>
+            <div class="col-xs-4 text-center">
+                <a href="@Url.Action("Picture", "Profile")">
+                    <img id="MeIcon" class="nav-icon" src="../../Images/camera-icon-grey.png" alt="Me" />
+                </a>
+            </div>          
+            <div class="col-xs-4 text-center">
+                <a href="@Url.Action("Index", "Settings")">
+                    <img id="SettingsIcon" class="nav-icon" src="../../Images/settings-grey-256.png" alt="Settings" />
+                </a>
+            </div>
+        </div>
+    </nav>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/navbar")
+    @Scripts.Render("~/bundles/navigation")
     @RenderSection("scripts", required: false)
 </body>
 </html>

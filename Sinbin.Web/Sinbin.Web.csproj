@@ -199,6 +199,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\FeedController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Controllers\SettingsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -234,13 +236,21 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\feed.css" />
     <Content Include="Content\login.css" />
+    <Content Include="Images\camera-icon-green.png" />
+    <Content Include="Images\camera-icon-grey.png" />
+    <Content Include="Images\settings-green-256.png" />
+    <Content Include="Scripts\footbar.js" />
+    <Content Include="Scripts\menu-icon.js" />
     <Content Include="Content\navbar-layout.css" />
     <Content Include="Content\register.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\activity-feed-green.png" />
+    <Content Include="Images\activity-feed-grey.png" />
     <Content Include="Images\icon-defaultprofile.png" />
+    <Content Include="Images\settings-grey-256.png" />
     <Content Include="Scripts\bootstrap-toggle.js" />
     <Content Include="Scripts\bootstrap-toggle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -307,6 +317,8 @@
     <Content Include="Views\Feed\Index.cshtml" />
     <Content Include="Views\Account\UserProfile.cshtml" />
     <Content Include="Views\Shared\_NavbarLayout.cshtml" />
+    <Content Include="Views\Profile\Picture.cshtml" />
+    <Content Include="Views\Settings\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

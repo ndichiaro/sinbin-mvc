@@ -22,10 +22,12 @@ namespace Sinbin.Web
             bundles.Add(new ScriptBundle("~/bundles/register").Include(
                         "~/Scripts/register.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/navbar").Include(
+            bundles.Add(new ScriptBundle("~/bundles/navigation").Include(
                         "~/Scripts/navbar.js",
                         "~/Scripts/navbar-layout.js",
-                        "~/Scripts/location-manager.js"));
+                        "~/Scripts/location-manager.js",
+                        "~/Scripts/menu-icon.js",
+                        "~/Scripts/footbar.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",

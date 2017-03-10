@@ -1,6 +1,7 @@
 ﻿var NavBar = (function () {
 
-    var linkLogOff, form, toggle, content;
+    var linkLogOff, form, toggle, content,
+        feedIcon;
 
     function post() {
         form.submit();
@@ -64,6 +65,7 @@
         linkLogOff.click(function () {
             post();
         });
+
         initToggleHandlers();
         onLoad();
     };

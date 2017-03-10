@@ -25,3 +25,8 @@
 .nav li:hover{
     background-color: rgb(121, 121, 121);
 }
+
+.navbar .nav-icon {
+    width: 40px;
+    height: auto;
+}

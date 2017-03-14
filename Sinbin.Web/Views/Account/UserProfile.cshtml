@@ -1,4 +1,4 @@
-﻿@model Sinbin.Web.Models.UserProfileViewModel
+﻿@model Sinbin.Web.Models.PictureViewModel
 
 @{
     Layout = "~/Views/Shared/_NavbarLayout.cshtml";
@@ -19,31 +19,6 @@
                         <span id="file-image" style="background-image:url('@Model.ProfilePictureUrl')"></span>
                     </label>
                     @Html.TextBoxFor(m => m.ProfilePicture, new { type = "file", id = "file-input", accept = "image/*", capture = "camera" })
-                </div>
-                <div class="form-group">
-                    @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = @Html.DisplayNameFor(m => m.FirstName) })
-                    @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
-                </div>
-                <div class="form-group">
-                    @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = @Html.DisplayNameFor(m => m.LastName) })
-                    @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
-                </div>
-                <div class="form-group">
-                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = @Html.DisplayNameFor(m => m.Email) })
-                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-                </div>
-                <div class="form-group">
-                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = @Html.DisplayNameFor(m => m.Password) })
-                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                </div>
-                <div class="form-group">
-                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = @Html.DisplayNameFor(m => m.ConfirmPassword) })
-                    @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
-                </div>
-                <div class="form-group">
-                    <div class="btn-container">
-                        <input type="submit" class="btn btn-green" value="Save" />
-                    </div>
                 </div>
             }
         </section>

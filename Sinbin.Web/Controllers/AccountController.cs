@@ -11,6 +11,7 @@ using Sinbin.UserManager;
 using Sinbin.Data.EF;
 using System.IO;
 using Sinbin.FileUpload;
+using Sinbin.Web.Helpers;
 
 namespace Sinbin.Web.Controllers
 {
@@ -169,8 +170,8 @@ namespace Sinbin.Web.Controllers
 
             if (ModelState.IsValid)
             {
-                var url = _fileStorage.Write(ConvertEmailToFileName(model.Email, model.ProfilePicture.FileName), 
-                    GetPostedFileBytes(model.ProfilePicture));
+                var url = _fileStorage.Write(FileHelpers.ConvertEmailToFileName(model.Email, model.ProfilePicture.FileName),
+                    FileHelpers.GetPostedFileBytes(model.ProfilePicture));
                 if(string.IsNullOrEmpty(url))
                 {
                     // display error
@@ -439,58 +440,6 @@ namespace Sinbin.Web.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<ActionResult> UserProfile()
-        {
-            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-            var viewModel = new UserProfileViewModel
-            {
-                ProfilePictureUrl = user.ProfilePicture,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                Email = user.Email
-            };
-
-            return View(viewModel);
-        }
-
-        [HttpPost]
-        [Authorize]
-        [ValidateAntiForgeryToken]
-        public ActionResult UserProfile(UserProfileViewModel model)
-        {
-            var user = UserManager.FindById(User.Identity.GetUserId());
-            if (user != null)
-            {
-                // if newly posted file
-                if (model.ProfilePicture != null)
-                {
-                    var url = _fileStorage.Write(ConvertEmailToFileName(model.Email, model.ProfilePicture.FileName),
-                    GetPostedFileBytes(model.ProfilePicture));
-                    if (string.IsNullOrEmpty(url))
-                    {
-                        // display error
-                    }
-                    user.ProfilePicture = url;
-                }
-                user.FirstName = model.FirstName;
-                user.LastName = model.LastName;
-                user.Email = user.Email;
-                user.UserName = user.Email;
-                if (!string.IsNullOrEmpty(model.Password))
-                {
-                    user.PasswordHash = new PasswordHasher().HashPassword(model.Password);
-                }
-                UserManager.Update(user);
-                // add randomId parameter so that the css will pull the updated
-                // profile picture rather than the cached. This is because the url
-                // always remains the same for the user
-                model.ProfilePictureUrl = user.ProfilePicture + $"?randomId={ Guid.NewGuid() }";
-            }
-            return View(model);
-        }
-
-        [HttpGet]
-        [Authorize]
         public JsonResult Availability()
         {
             var result = UserManager.FindById(User.Identity.GetUserId()).Availability;
@@ -518,7 +467,7 @@ namespace Sinbin.Web.Controllers
 
         #endregion
 
-            #region Override Methods
+        #region Override Methods
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -596,32 +545,6 @@ namespace Sinbin.Web.Controllers
                 }
                 context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
             }
-        }
-
-        private byte[] GetPostedFileBytes(HttpPostedFileBase file)
-        {
-            byte[] data;
-            using (Stream inputStream = file.InputStream)
-            {
-                MemoryStream memoryStream = inputStream as MemoryStream;
-                if (memoryStream == null)
-                {
-                    memoryStream = new MemoryStream();
-                    inputStream.CopyTo(memoryStream);
-                }
-                data = memoryStream.ToArray();
-            }
-            return data;
-        }
-
-        private string ConvertEmailToFileName(string email, string fileName)
-        {
-            // split the file name by . and take 
-            // the last as the file extension
-            var arr = fileName.Split('.');
-            var extension = arr[arr.Length - 1];
-            var name = email.Split('@')[0];
-            return string.Concat(name, ".", extension);
         }
         #endregion
     }

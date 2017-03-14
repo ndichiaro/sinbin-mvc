@@ -1,0 +1,55 @@
+﻿.row {
+    margin-top: 90px;    
+}
+
+.btn-container .btn{
+    width: 100%;
+}
+
+.btn-container .btn-container{
+    padding: 5px 0px;
+}
+
+.btn-container .btn-green {
+  background:#61bd4f;
+  box-shadow:0 2px 0 #3f6f21;
+  color:#fff
+}
+
+.btn-container .btn-green:hover {
+    background:#5aac44;
+    background:-webkit-linear-gradient(top, #5aac44 0, #519839 100%);
+    background:linear-gradient(to bottom, #5aac44 0, #519839 100%);
+    color:#fff
+}
+
+.profile {
+  
+  background-image: url("../Images/icon-defaultprofile.png")
+}
+
+.image-upload{
+    text-align: center;
+    cursor: pointer;
+}
+
+.image-upload > input
+{
+    display: none;
+}
+
+#file-image
+{
+    display: block;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    margin: 0 auto;
+}
+
+.title{
+    text-align: center;
+}

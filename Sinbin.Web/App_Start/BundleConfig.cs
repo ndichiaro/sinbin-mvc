@@ -20,7 +20,12 @@ namespace Sinbin.Web
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/register").Include(
+                        "~/Scripts/photo-upload.js",
                         "~/Scripts/register.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/photo").Include(
+                        "~/Scripts/picture.js",
+                        "~/Scripts/photo-upload.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/navigation").Include(
                         "~/Scripts/navbar.js",
@@ -51,6 +56,9 @@ namespace Sinbin.Web
 					  
 			bundles.Add(new StyleBundle("~/Content/register").Include(
                       "~/Content/register.css"));
+
+            bundles.Add(new StyleBundle("~/Content/picture").Include(
+                      "~/Content/picture.css"));
 
             bundles.Add(new StyleBundle("~/Content/navbar").Include(
                       "~/Content/navbar-layout.css"));

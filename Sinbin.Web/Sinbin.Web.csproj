@@ -204,6 +204,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\FileHelpers.cs" />
     <Compile Include="Models\AddPhoneNumberViewModel.cs" />
     <Compile Include="Models\ChangePasswordViewModel.cs" />
     <Compile Include="Models\ConfigureTwoFactorViewModel.cs" />
@@ -216,7 +217,7 @@
     <Compile Include="Models\LocationViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\ManageLoginsViewModel.cs" />
-    <Compile Include="Models\UserProfileViewModel.cs" />
+    <Compile Include="Models\PictureViewModel.cs" />
     <Compile Include="Models\RegisterViewModel.cs" />
     <Compile Include="Models\ResetPasswordViewModel.cs" />
     <Compile Include="Models\SendCodeViewModel.cs" />
@@ -236,6 +237,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\feed.css" />
     <Content Include="Content\login.css" />
+    <Content Include="Content\picture.css" />
     <Content Include="Images\camera-icon-green.png" />
     <Content Include="Images\camera-icon-grey.png" />
     <Content Include="Images\settings-green-256.png" />
@@ -279,6 +281,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\photo-upload.js" />
+    <Content Include="Scripts\picture.js" />
     <Content Include="Scripts\register.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />

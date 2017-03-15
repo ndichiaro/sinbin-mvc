@@ -9,7 +9,7 @@
         feedActive = false;
         meActive = true;
         settingsActive = false;
-    }else if (window.location.pathname === "/Settings/Index") {
+    }else if (window.location.pathname === "/Settings/Menu") {
         feedActive = false;
         meActive = false;
         settingsActive = true;

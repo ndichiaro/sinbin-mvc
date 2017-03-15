@@ -62,6 +62,9 @@ namespace Sinbin.Web
 
             bundles.Add(new StyleBundle("~/Content/navbar").Include(
                       "~/Content/navbar-layout.css"));
+
+            bundles.Add(new StyleBundle("~/Content/menu").Include(
+                      "~/Content/menu.css"));
         }
     }
 }

@@ -237,6 +237,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\feed.css" />
     <Content Include="Content\login.css" />
+    <Content Include="Content\menu.css" />
     <Content Include="Content\picture.css" />
     <Content Include="Images\camera-icon-green.png" />
     <Content Include="Images\camera-icon-grey.png" />
@@ -322,7 +323,7 @@
     <Content Include="Views\Account\UserProfile.cshtml" />
     <Content Include="Views\Shared\_NavbarLayout.cshtml" />
     <Content Include="Views\Profile\Picture.cshtml" />
-    <Content Include="Views\Settings\Index.cshtml" />
+    <Content Include="Views\Settings\Menu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

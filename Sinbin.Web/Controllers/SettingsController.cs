@@ -2,10 +2,12 @@
 
 namespace Sinbin.Web.Controllers
 {
+    [Authorize]
     public class SettingsController : Controller
     {
-        // GET: Settings
-        public ActionResult Index()
+        [HttpGet]
+        [Authorize]
+        public ActionResult Menu()
         {
             return View();
         }

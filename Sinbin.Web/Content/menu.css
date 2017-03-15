@@ -1,0 +1,16 @@
+﻿.container {
+    padding: 0;
+}
+
+.body-content {
+    padding: 0;
+}
+
+.list-group-item {
+    border-bottom: 1px solid #ddd;
+    padding: 20px 15px;
+}
+
+.list-group-item.disabled {
+    background-color: white;
+}

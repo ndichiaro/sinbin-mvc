@@ -239,9 +239,15 @@
     <Content Include="Content\login.css" />
     <Content Include="Content\menu.css" />
     <Content Include="Content\picture.css" />
+    <Content Include="Images\activity-feed-darkgrey.png" />
+    <Content Include="Images\activity-feed-lightgrey.png" />
+    <Content Include="Images\camera-icon-darkgrey.png" />
     <Content Include="Images\camera-icon-green.png" />
     <Content Include="Images\camera-icon-grey.png" />
+    <Content Include="Images\camera-icon-lightgrey.png" />
+    <Content Include="Images\settings-darkgrey.png" />
     <Content Include="Images\settings-green-256.png" />
+    <Content Include="Images\settings-lightgrey.png" />
     <Content Include="Scripts\footbar.js" />
     <Content Include="Scripts\menu-icon.js" />
     <Content Include="Content\navbar-layout.css" />

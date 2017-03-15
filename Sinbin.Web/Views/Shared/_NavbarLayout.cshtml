@@ -19,7 +19,16 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <input id="statusToggle" type="checkbox" data-toggle="toggle" data-width="75" data-on=" " data-off=" " data-onstyle="success" data-offstyle="danger">
+                    <style>
+                        .toggle.ios, .toggle-on.ios, .toggle-off.ios {
+                            border-radius: 20px;
+                        }
+
+                            .toggle.ios .toggle-handle {
+                                border-radius: 20px;
+                            }
+                    </style>
+                    <input id="statusToggle" type="checkbox" data-toggle="toggle" data-style="ios" data-width="20" data-on=" " data-off=" " data-onstyle="success" data-offstyle="danger">
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -44,17 +53,17 @@
         <div class="container">
             <div class="col-xs-4 text-center">
                 <a href="@Url.Action("Index", "Feed")">
-                    <img id="FeedIcon" class="nav-icon" src="../../Images/activity-feed-grey.png" alt="Feed"/>
+                    <img id="FeedIcon" class="nav-icon" src="../../Images/activity-feed-lightgrey.png" alt="Feed"/>
                 </a>
             </div>
             <div class="col-xs-4 text-center">
                 <a href="@Url.Action("Picture", "Profile")">
-                    <img id="MeIcon" class="nav-icon" src="../../Images/camera-icon-grey.png" alt="Me" />
+                    <img id="MeIcon" class="nav-icon" src="../../Images/camera-icon-lightgrey.png" alt="Me" />
                 </a>
             </div>          
             <div class="col-xs-4 text-center">
-                <a href="@Url.Action("Menu", "Settings")">
-                    <img id="SettingsIcon" class="nav-icon" src="../../Images/settings-grey-256.png" alt="Settings" />
+                <a href="@Url.Action("Index", "Settings")">
+                    <img id="SettingsIcon" class="nav-icon" src="../../Images/settings-lightgrey.png" alt="Settings" />
                 </a>
             </div>
         </div>

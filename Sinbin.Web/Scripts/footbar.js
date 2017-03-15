@@ -18,24 +18,24 @@
     var feedIcon = new MenuIcon({
         sender: "FeedIcon",
         active: feedActive,
-        src: "../../Images/activity-feed-darkgrey.png",
-        alt: "../../Images/activity-feed-lightgrey.png"
+        src: "../../Images/home-active.png",
+        alt: "../../Images/home-inactive.png"
     });
     feedIcon.Init();
 
     var meIcon = new MenuIcon({
         sender: "MeIcon",
         active: meActive,
-        src: "../../Images/camera-icon-darkgrey.png",
-        alt: "../../Images/camera-icon-lightgrey.png"
+        src: "../../Images/camera-active.png",
+        alt: "../../Images/camera-inactive.png"
     });
     meIcon.Init();
 
     var settingsIcon = new MenuIcon({
         sender: "SettingsIcon",
         active: settingsActive,
-        src: "../../Images/settings-darkgrey.png",
-        alt: "../../Images/settings-lightgrey.png"
+        src: "../../Images/settings-active.png",
+        alt: "../../Images/settings-inactive.png"
     });
     settingsIcon.Init();
 });

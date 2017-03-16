@@ -43,6 +43,9 @@ namespace Sinbin.Web
                       "~/Scripts/feed.js",
                       "~/Scripts/feed-index.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/settings").Include(
+                      "~/Scripts/settings-menu.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/bootstrap-toggle.css",

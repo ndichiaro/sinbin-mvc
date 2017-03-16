@@ -289,6 +289,7 @@
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\location-manager.js" />
+    <Content Include="Scripts\settings-menu.js" />
     <Content Include="Scripts\navbar-layout.js" />
     <Content Include="Scripts\navbar.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />

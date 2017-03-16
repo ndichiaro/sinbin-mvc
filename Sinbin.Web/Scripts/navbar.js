@@ -1,11 +1,6 @@
 ﻿var NavBar = (function () {
 
-    var linkLogOff, form, toggle, content,
-        feedIcon;
-
-    function post() {
-        form.submit();
-    };
+    var toggle, content, feedIcon;
 
     function successfulToggle(status) {
         if (status === toggle.prop("checked")) {
@@ -62,23 +57,12 @@
     }
 
     function init() {
-        linkLogOff.click(function () {
-            post();
-        });
-
         initToggleHandlers();
         onLoad();
     };
 
     // constructor
     function module(settings) {
-        if ("logoff" in settings) {
-            linkLogOff = $(settings.logoff);
-        }
-
-        if ("form" in settings) {
-            form = $(settings.form);
-        }
 
         if ("toggle" in settings) {
             toggle = $(settings.toggle);

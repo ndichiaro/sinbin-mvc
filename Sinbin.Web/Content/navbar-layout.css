@@ -30,3 +30,9 @@
     width: 40px;
     height: auto;
 }
+
+.navbar .nav-logo {
+    width: 100px;
+    height: auto;
+    padding-left: 60px;
+}

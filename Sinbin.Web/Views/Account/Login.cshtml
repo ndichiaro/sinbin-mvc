@@ -4,38 +4,45 @@
     ViewBag.Title = "Log In";
 }
 @Styles.Render("~/Content/login")
-
 <div class="row login">
-    <div class="col-xs-1"></div>
-    <div class="col-xs-10">
-        <section id="loginForm">
-            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-            {
-                @Html.AntiForgeryToken()
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
-                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = @Html.DisplayNameFor(m => m.Email) })
-                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-                </div>
-                <div class="form-group">
-                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = @Html.DisplayNameFor(m => m.Password) })
-                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                    @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                </div>
-                <div class="form-group">
-                    <div class="btn-container">
-                        <input type="submit" value="Log In" id="signIn" class="btn btn-green" />
-                    </div>
-                    <p>
-                        Don't have an account? @Html.ActionLink("Create a Social Account", "Register")
-                    </p>
-                </div>
-            }
-        </section>
+    <div class="col-xs-3"></div>
+    <div class="col-xs-7">
+    <img id="Logo" class="login-logo" src="../../Images/hilo_new.png" alt="Hilo" />
     </div>
     <div class="col-xs-1"></div>
 </div>
+<br /><br />
+    <div class="row login">
+        <div class="col-xs-1"></div>
+        <div class="col-xs-10">
+            <section id="loginForm">
+                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = @Html.DisplayNameFor(m => m.Email) })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = @Html.DisplayNameFor(m => m.Password) })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                        @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                    </div>
+                    <div class="form-group">
+                        <div class="btn-container">
+                            <input type="submit" value="Log In" id="signIn" class="btn btn-green" />
+                        </div>
+                        <p>
+                            Don't have an account? @Html.ActionLink("Create one!", "Register")
+                        </p>
+                    </div>
+                }
+            </section>
+        </div>
+        <div class="col-xs-1"></div>
+    </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

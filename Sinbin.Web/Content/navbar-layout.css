@@ -34,5 +34,6 @@
 .navbar .nav-logo {
     width: 100px;
     height: auto;
+    padding-top: 7px;
     padding-left: 20px;
 }

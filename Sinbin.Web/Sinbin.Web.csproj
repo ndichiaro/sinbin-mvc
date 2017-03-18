@@ -248,6 +248,7 @@
     <Content Include="Images\camera-icon-lightgrey.png" />
     <Content Include="Images\camera-inactive.png" />
     <Content Include="Images\hilo.png" />
+    <Content Include="Images\hilo_new.png" />
     <Content Include="Images\home-active.png" />
     <Content Include="Images\home-inactive.png" />
     <Content Include="Images\settings-active.png" />

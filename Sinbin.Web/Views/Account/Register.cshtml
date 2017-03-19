@@ -1,11 +1,6 @@
 ﻿@model Sinbin.Web.Models.RegisterViewModel
-@{
-    ViewBag.Title = "Create a Social Account";
-}
 
 @Styles.Render("~/Content/register")
-
-<h2 class="title">@ViewBag.Title</h2>
 <div class="row">
     <div class="col-xs-1"></div>
     <div class="col-xs-10">
@@ -15,8 +10,8 @@
                 @Html.AntiForgeryToken()
 
                 <div class="form-group image-upload">
-                    <label for="file-input">
-                        <span id="file-image" style="background-image:url('../../Images/icon-defaultprofile.png')"></span>
+                    <label id="file-image" for="file-input">
+                        <img src="../../Images/icon-defaultprofile.png" class="file-image" alt="Photo" />
                     </label>
                     @Html.TextBoxFor(m => m.ProfilePicture, new { type = "file", id = "file-input", accept = "image/*", capture = "camera" })
                 </div>
@@ -56,5 +51,6 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/loadImage")
     @Scripts.Render("~/bundles/register")
 }

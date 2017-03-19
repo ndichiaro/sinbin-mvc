@@ -238,6 +238,7 @@
     <Content Include="Content\feed.css" />
     <Content Include="Content\login.css" />
     <Content Include="Content\menu.css" />
+    <Content Include="Content\photo-upload.css" />
     <Content Include="Content\picture.css" />
     <Content Include="Images\activity-feed-darkgrey.png" />
     <Content Include="Images\activity-feed-lightgrey.png" />
@@ -255,6 +256,7 @@
     <Content Include="Images\settings-inactive.png" />
     <Content Include="Images\settings-lightgrey.png" />
     <Content Include="Scripts\footbar.js" />
+    <Content Include="Scripts\load-image.all.min.js" />
     <Content Include="Scripts\menu-icon.js" />
     <Content Include="Content\navbar-layout.css" />
     <Content Include="Content\register.css" />

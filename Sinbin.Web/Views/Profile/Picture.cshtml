@@ -16,8 +16,8 @@
                 @Html.AntiForgeryToken()
 
                 <div class="form-group image-upload">
-                    <label for="file-input">
-                        <span id="file-image" style="background-image:url('@Model.ProfilePictureUrl')"></span>
+                    <label id="file-image" for="file-input">
+                        <img src="@Model.ProfilePictureUrl" class="file-image" alt="Photo" />
                     </label>
                     @Html.TextBoxFor(m => m.ProfilePicture, new { type = "file", id = "file-input", accept = "image/*", capture = "camera" })
                 </div>

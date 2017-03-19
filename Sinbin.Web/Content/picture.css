@@ -28,28 +28,6 @@
   background-image: url("../Images/icon-defaultprofile.png")
 }
 
-.image-upload{
-    text-align: center;
-    cursor: pointer;
-}
-
-.image-upload > input
-{
-    display: none;
-}
-
-#file-image
-{
-    display: block;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    margin: 0 auto;
-}
-
 .title{
     text-align: center;
 }

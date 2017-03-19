@@ -46,6 +46,9 @@ namespace Sinbin.Web
             bundles.Add(new ScriptBundle("~/bundles/settings").Include(
                       "~/Scripts/settings-menu.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/loadImage").Include(
+                      "~/Scripts/load-image.all.min.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/bootstrap-toggle.css",
@@ -58,10 +61,12 @@ namespace Sinbin.Web
                       "~/Content/feed.css"));
 					  
 			bundles.Add(new StyleBundle("~/Content/register").Include(
-                      "~/Content/register.css"));
+                      "~/Content/register.css",
+                      "~/Content/photo-upload.css"));
 
             bundles.Add(new StyleBundle("~/Content/picture").Include(
-                      "~/Content/picture.css"));
+                      "~/Content/picture.css",
+                      "~/Content/photo-upload.css"));
 
             bundles.Add(new StyleBundle("~/Content/navbar").Include(
                       "~/Content/navbar-layout.css"));

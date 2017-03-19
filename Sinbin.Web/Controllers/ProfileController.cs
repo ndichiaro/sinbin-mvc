@@ -56,8 +56,21 @@ namespace Sinbin.Web.Controllers
             return View(viewModel);
         }
 
+        // GET: Profile/Picture
+        [HttpGet]
         [Authorize]
+        public async Task<JsonResult> PictureSrc()
+        {
+            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            var viewModel = new PictureViewModel
+            {
+                ProfilePictureUrl = user.ProfilePicture,
+            };
+            return Json(viewModel);
+        }
+
         [HttpPost]
+        [Authorize]
         public ActionResult Picture(PictureViewModel model)
         {
             var user = UserManager.FindById(User.Identity.GetUserId());

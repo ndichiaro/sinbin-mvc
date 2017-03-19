@@ -37,3 +37,11 @@
     padding-top: 7px;
     padding-left: 20px;
 }
+
+.toggle.ios, .toggle-on.ios, .toggle-off.ios {
+    border-radius: 20px;
+}
+
+.toggle.ios .toggle-handle {
+    border-radius: 20px;
+}

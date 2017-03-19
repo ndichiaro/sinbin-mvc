@@ -14,32 +14,9 @@
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
                     <img id="Logo" class="nav-logo" src="../../Images/hilo_new.png" alt="Hilo" />
-                    <style>
-                        .toggle.ios, .toggle-on.ios, .toggle-off.ios {
-                            border-radius: 20px;
-                        }
-
-                            .toggle.ios .toggle-handle {
-                                border-radius: 20px;
-                            }
-                    </style>
                     <input id="statusToggle" type="checkbox" data-toggle="toggle" data-style="ios" data-width="20" data-on=" " data-off=" " data-onstyle="success" data-offstyle="danger">
                 </div>
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Home", "Index", "Feed")</li>
-                        <li>@Html.ActionLink("Profile", "UserProfile", "Account")</li>
-                        <li>
-                            <a href="#" id="linkLogOff">Log Off</a>
-                            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new {id = "logoutForm"}))
-                            {
-                                @Html.AntiForgeryToken()
-                            }
-                        </li>
-                    </ul>
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
+            </div>
         </nav>
     <div class="container body-content">
         @RenderBody()

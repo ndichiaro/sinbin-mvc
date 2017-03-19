@@ -16,3 +16,24 @@
 .dl-horizontal dt {
     white-space: normal;
 }
+
+.btn-container .btn{
+    width: 100%;
+}
+
+.btn-container .btn-container{
+    padding: 5px 0px;
+}
+
+.btn-container .btn-green {
+  background:#61bd4f;
+  box-shadow:0 2px 0 #3f6f21;
+  color:#fff
+}
+
+.btn-container .btn-green:hover {
+    background:#5aac44;
+    background:-webkit-linear-gradient(top, #5aac44 0, #519839 100%);
+    background:linear-gradient(to bottom, #5aac44 0, #519839 100%);
+    color:#fff
+}

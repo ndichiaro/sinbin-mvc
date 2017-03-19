@@ -1,0 +1,42 @@
+﻿@model Sinbin.Web.Models.AccountInfoViewModel
+
+@{
+    Layout = "~/Views/Shared/_NavbarLayout.cshtml";
+}
+
+@Styles.Render("~/Content/info")
+
+<div class="row accout-info">
+    <div class="col-xs-1"></div>
+    <div class="col-xs-10">
+        <section id="registerForm">
+            @using (Html.BeginForm("Info", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-group">
+                    @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = @Html.DisplayNameFor(m => m.FirstName) })
+                    @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = @Html.DisplayNameFor(m => m.LastName) })
+                    @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = @Html.DisplayNameFor(m => m.Email) })
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <div class="btn-container">
+                        <input type="submit" class="btn btn-green" value="Update Account" />
+                    </div>
+                </div>
+            }
+        </section>
+    </div>
+    <div class="col-xs-1"></div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

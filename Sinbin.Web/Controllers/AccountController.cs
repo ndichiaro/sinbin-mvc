@@ -465,6 +465,38 @@ namespace Sinbin.Web.Controllers
                 new { Success = true, Message = "Location updated successfully." });
         }
 
+        [HttpGet]
+        [Authorize]
+        public async Task<ActionResult> Info()
+        {
+            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            var viewModel = new AccountInfoViewModel
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email
+            };
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public ActionResult Info(AccountInfoViewModel model)
+        {
+            var user = UserManager.FindById(User.Identity.GetUserId());
+            if (user != null)
+            {
+                user.FirstName = model.FirstName;
+                user.LastName = model.LastName;
+                user.Email = user.Email;
+                user.UserName = user.Email;
+
+                UserManager.Update(user);
+            }
+            return View(model);
+        }
         #endregion
 
         #region Override Methods

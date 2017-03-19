@@ -1,25 +1,4 @@
-﻿.login .btn{
-    width: 100%;
-}
-
-.login .btn-container{
-    padding: 5px 0px;
-}
-
-.login .btn-green {
-  background:#61bd4f;
-  box-shadow:0 2px 0 #3f6f21;
-  color:#fff
-}
-
-.login .btn-green:hover {
-    background:#5aac44;
-    background:-webkit-linear-gradient(top, #5aac44 0, #519839 100%);
-    background:linear-gradient(to bottom, #5aac44 0, #519839 100%);
-    color:#fff
-}
-
-.login .login-logo {
+﻿.login .login-logo {
     width: 200px;
     height: auto;
     align-content: center;

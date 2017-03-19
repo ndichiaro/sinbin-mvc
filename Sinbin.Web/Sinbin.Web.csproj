@@ -205,6 +205,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\FileHelpers.cs" />
+    <Compile Include="Models\AccountInfoViewModel.cs" />
     <Compile Include="Models\AddPhoneNumberViewModel.cs" />
     <Compile Include="Models\ChangePasswordViewModel.cs" />
     <Compile Include="Models\ConfigureTwoFactorViewModel.cs" />
@@ -236,6 +237,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\feed.css" />
+    <Content Include="Content\info.css" />
     <Content Include="Content\login.css" />
     <Content Include="Content\menu.css" />
     <Content Include="Content\photo-upload.css" />
@@ -337,7 +339,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Feed\Index.cshtml" />
-    <Content Include="Views\Account\UserProfile.cshtml" />
+    <Content Include="Views\Account\Info.cshtml" />
     <Content Include="Views\Shared\_NavbarLayout.cshtml" />
     <Content Include="Views\Profile\Picture.cshtml" />
     <Content Include="Views\Settings\Menu.cshtml" />

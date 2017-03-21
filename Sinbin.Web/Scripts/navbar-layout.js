@@ -1,7 +1,8 @@
 ﻿$(function () {
     var navBar = new NavBar({
         toggle: "#statusToggle",
-        content: ".feed"
+        content: ".feed",
+        warning: ".avail-warning"
     });
     navBar.Init();
 

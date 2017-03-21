@@ -25,3 +25,9 @@
 .feed {
     display: none;
 }
+
+.avail-warning{
+    display: none;
+    text-align: center;
+    margin-top: 200px;
+}

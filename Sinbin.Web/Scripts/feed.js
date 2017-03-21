@@ -1,5 +1,9 @@
-﻿var Feed = (function() {
+﻿var Feed = (function(settings) {
     var container;
+
+    if ("container" in settings) {
+        container = $(settings.container);
+    }
 
     function build(data) {
         if (data != undefined) {
@@ -45,16 +49,8 @@
             }
         });
     }
-
-    function module(settings) {
-        if ("container" in settings) {
-            container = $(settings.container);
-        }
-    };
     
-    module.prototype.Init = function() {
+    this.Init = function() {
         setInterval(get, 1000);
     }
-
-    return module;
-})();
+});

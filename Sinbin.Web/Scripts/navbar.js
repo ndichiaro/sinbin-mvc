@@ -1,13 +1,26 @@
-﻿var NavBar = (function () {
+﻿var NavBar = (function (settings) {
+    var toggle, content, feedIcon, warning;
 
-    var toggle, content, feedIcon;
+    if ("toggle" in settings) {
+        toggle = $(settings.toggle);
+    }
+
+    if ("content" in settings) {
+        content = $(settings.content);
+    }
+
+    if ("warning" in settings) {
+        warning = $(settings.warning);
+    }
 
     function successfulToggle(status) {
         if (status === toggle.prop("checked")) {
             if (status) {
                 content.show();
+                warning.hide();
             } else {
                 content.hide();
+                warning.show();
             }
         }
     }
@@ -61,17 +74,5 @@
         onLoad();
     };
 
-    // constructor
-    function module(settings) {
-
-        if ("toggle" in settings) {
-            toggle = $(settings.toggle);
-        }
-
-        if ("content" in settings) {
-            content = $(settings.content);
-        }
-    }
-    module.prototype.Init = init;
-    return module;
-})();
+    this.Init = init;
+});

@@ -23,6 +23,7 @@
                 warning.show();
             }
         }
+        $(warning.children()[0]).text('You must be available to view the feed.');
     }
     
     function setStatus(status) {

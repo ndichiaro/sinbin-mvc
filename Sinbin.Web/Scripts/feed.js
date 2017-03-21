@@ -1,8 +1,16 @@
 ﻿var Feed = (function(settings) {
-    var container;
+    var container, warning, toggle;
 
     if ("container" in settings) {
         container = $(settings.container);
+    }
+
+    if ("warning" in settings) {
+        warning = $(settings.warning);
+    }
+
+    if ("toggle" in settings) {
+        toggle = $(settings.toggle);
     }
 
     function build(data) {
@@ -12,6 +20,13 @@
             while (containerElement.firstChild) {
                 containerElement.removeChild(containerElement.firstChild);
             }
+
+            if (toggle.prop("checked") && data.length == 0) {
+                warning.show()
+                $(warning.children()[0]).text("There is no one currently in your area.");
+                return;
+            }
+
             for (var i = 0; i < data.length; i++) {
                 // create image container
                 var imgContainer = document.createElement("div");

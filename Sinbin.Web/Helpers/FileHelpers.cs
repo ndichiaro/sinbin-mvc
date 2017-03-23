@@ -8,7 +8,7 @@ namespace Sinbin.Web.Helpers
 {
     public static class FileHelpers
     {
-        #region Static Methods
+        #region Public Methods
         public static byte[] GetPostedFileBytes(HttpPostedFileBase file)
         {
             byte[] data;
@@ -45,13 +45,27 @@ namespace Sinbin.Web.Helpers
         /// <returns>The RotateFlipType value corresponding to the applied rotation. If no rotation occurred, RotateFlipType.RotateNoneFlipNone will be returned.</returns>
         public static byte[] RotateImageByExifOrientationData(byte[] source, bool updateExifData = true)
         {
+            ImageCodecInfo jpgEncoder = GetEncoder(ImageFormat.Jpeg);
+            Encoder myEncoder = Encoder.Quality;
+            EncoderParameters myEncoderParameters = new EncoderParameters(1);
+
+            EncoderParameter myEncoderParameter = new EncoderParameter(myEncoder, 20L);
+            myEncoderParameters.Param[0] = myEncoderParameter;
+
             // Rotate the image according to EXIF data
             Bitmap bmp;
             using (var ms = new MemoryStream(source))
             {
-                bmp = new Bitmap(ms);
-                RotateFlipType fType = RotateImageByExifOrientationData(bmp, updateExifData);
-                return ImageToByte(bmp);
+                var temp = new Bitmap(ms);
+
+                using (var s = new MemoryStream())
+                {
+                    temp.Save(s, jpgEncoder, myEncoderParameters);
+                    bmp = new Bitmap(s);
+
+                    RotateFlipType fType = RotateImageByExifOrientationData(bmp, updateExifData);
+                    return ImageToByte(bmp);
+                }
             }
         }
 
@@ -117,6 +131,22 @@ namespace Sinbin.Web.Helpers
             ImageConverter converter = new ImageConverter();
             return (byte[])converter.ConvertTo(img, typeof(byte[]));
         }
+        #endregion
+
+        #region Private Methods
+        private static ImageCodecInfo GetEncoder(ImageFormat format)
+        {
+            ImageCodecInfo[] codecs = ImageCodecInfo.GetImageDecoders();
+            foreach (ImageCodecInfo codec in codecs)
+            {
+                if (codec.FormatID == format.Guid)
+                {
+                    return codec;
+                }
+            }
+            return null;
+        }
+
         #endregion
     }
 }

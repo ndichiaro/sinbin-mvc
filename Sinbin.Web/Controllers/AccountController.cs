@@ -497,6 +497,38 @@ namespace Sinbin.Web.Controllers
             }
             return View(model);
         }
+
+        [HttpGet]
+        [Authorize]
+        public ActionResult ChangePassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<ActionResult> ChangePassword(ChangePasswordViewModel model)
+        {
+            var hasher = new PasswordHasher();
+            var user = UserManager.FindById(User.Identity.GetUserId());
+            // make sure old password is correct
+            if (hasher.VerifyHashedPassword(user.PasswordHash, model.OldPassword) == PasswordVerificationResult.Failed)
+            {
+                ModelState.AddModelError("ChangePassword", "The password that was entered is not correct.");
+            }
+            // make sure new password is not the same as the old password
+            if (hasher.VerifyHashedPassword(user.PasswordHash, model.NewPassword) == PasswordVerificationResult.Success)
+            {
+                ModelState.AddModelError("ChangePassword", "The new password cannot be the same as the old password.");
+            }
+            if (ModelState.IsValid)
+            {
+                user.PasswordHash = hasher.HashPassword(model.NewPassword);
+                await UserManager.UpdateAsync(user);
+                ViewBag.Message = "Password has been updated.";
+            }
+            return View();
+        }
         #endregion
 
         #region Override Methods

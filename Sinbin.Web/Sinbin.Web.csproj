@@ -343,6 +343,7 @@
     <Content Include="Views\Shared\_NavbarLayout.cshtml" />
     <Content Include="Views\Profile\Picture.cshtml" />
     <Content Include="Views\Settings\Menu.cshtml" />
+    <Content Include="Views\Account\ChangePassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

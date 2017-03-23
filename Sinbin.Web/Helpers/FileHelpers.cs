@@ -31,8 +31,10 @@ namespace Sinbin.Web.Helpers
             // the last as the file extension
             var arr = fileName.Split('.');
             var extension = arr[arr.Length - 1];
-            var name = email.Split('@')[0];
-            return string.Concat(name, ".", extension);
+            var emailArr = email.Split('@');
+            var name = emailArr[0];
+            var host = emailArr[1].Split('.')[0];
+            return string.Concat(name, host, ".", extension);
         }
 
         /// <summary>

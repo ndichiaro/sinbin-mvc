@@ -8,7 +8,7 @@
             @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
             {
                 @Html.AntiForgeryToken()
-
+                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
                 <div class="form-group image-upload">
                     <label id="file-image" for="file-input">
                         <img src="../../Images/icon-defaultprofile.png" class="file-image" alt="Photo" />

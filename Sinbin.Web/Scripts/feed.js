@@ -57,7 +57,7 @@
             type: "GET",
             contentType: "application/json; charset=utf-8",
             error: function (xhr) {
-                alert("Error: " + xhr.statusText);
+                console.log("Error: " + xhr.responseText);
             },
             success: function (result) {
                 build(result);

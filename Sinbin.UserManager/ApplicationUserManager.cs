@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
+using Sinbin.ApplicationManager;
 using Sinbin.Data.EF;
 using System;
 using System.Threading.Tasks;
@@ -19,6 +20,7 @@ namespace Sinbin.UserManager
         public ApplicationUserManager(IUserStore<User> store)
             : base(store)
         {
+            
         }
         
         public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context)
@@ -32,14 +34,7 @@ namespace Sinbin.UserManager
             };
 
             // Configure validation logic for passwords
-            manager.PasswordValidator = new PasswordValidator
-            {
-                RequiredLength = 6,
-                RequireNonLetterOrDigit = true,
-                RequireDigit = true,
-                RequireLowercase = true,
-                RequireUppercase = true,
-            };
+            manager.PasswordValidator = new CustomPasswordValidator(6);
 
             // Configure user lockout defaults
             manager.UserLockoutEnabledByDefault = true;
